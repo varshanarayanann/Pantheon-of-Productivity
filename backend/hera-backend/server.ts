@@ -12,8 +12,7 @@ dotenv.config({ path: path.resolve(__dirname, ".env.local") }); // Configure dot
 // we use the default express import and qualify all express types with the
 // `express` namespace (e.g., `express.Request`). This resolves all
 // subsequent typing errors in this file.
-// FIX: Import Request and Response and alias them to avoid conflicts with global DOM types.
-import express, { Request as ExpressRequest, Response as ExpressResponse } from "express";
+import express from "express";
 import cors from "cors";
 //import "dotenv/config"; //Removed due to Manual configuration
 import {
@@ -122,8 +121,8 @@ interface ChatMessage {
   text: string;
 }
 
-// FIX: Use aliased ExpressRequest and ExpressResponse types to resolve conflicts and typing errors.
-app.post("/api/chat", async (req: ExpressRequest<never, any, { message: string; history: ChatMessage[]; }>, res: ExpressResponse) => {
+// FIX: Qualify Request and Response with the express namespace to avoid conflicts with global DOM types.
+app.post("/api/chat", async (req: express.Request<never, any, { message: string; history: ChatMessage[]; }>, res: express.Response) => {
   try {
     // FIX: Removed `as` cast as the type is now provided in the handler signature.
     const { message, history: clientHistory } = req.body;
