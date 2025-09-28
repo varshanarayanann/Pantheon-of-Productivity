@@ -12,3 +12,24 @@ export interface Goddess {
   // This resolves a TypeScript error when using React.cloneElement in GoddessPageLayout.tsx.
   icon: React.ReactElement<{ className?: string }>;
 }
+export interface CalendarEvent {
+  id: string;
+  title: string;
+  start: Date;
+  end: Date;
+  description?: string;
+}
+
+export interface ChatMessage {
+  id: string;
+  sender: "user" | "bot";
+  text: string;
+}
+
+export interface Task {
+  id: string;
+  title: string;
+  type: "assignment" | "habit";
+  completed: boolean;
+  dueDate?: string; // Storing as ISO string for simplicity
+}

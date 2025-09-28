@@ -1,6 +1,6 @@
 
 import React, { useState, useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '../../context/AuthContext';
 
 const UserIcon: React.FC<{ className: string }> = ({ className }) => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
@@ -59,7 +59,7 @@ const LoginPage: React.FC = () => {
       // On success, the backend sends back a token and userName
       if (data.token && data.userName) {
         // NOTE: In a production app, you would securely store the JWT (data.token) here.
-        auth?.login(data.userName);
+        auth?.login(data.userName, data.userId);
       } else {
         alert('Login failed. Please check your credentials.');
       }

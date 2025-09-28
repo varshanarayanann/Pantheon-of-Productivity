@@ -6,10 +6,10 @@ const HomePage: React.FC = () => {
   return (
     <div>
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-serif font-bold text-slate-800">
+        <h1 className="text-4xl font-serif font-bold text-slate-800 dark:text-slate-100">
           The Pantheon
         </h1>
-        <p className="text-lg text-slate-600 mt-2">
+        <p className="text-lg text-slate-600 dark:text-slate-300 mt-2">
           Invoke the power of the goddesses to conquer your day.
         </p>
       </div>
