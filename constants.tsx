@@ -84,7 +84,7 @@ export const GODDESSES: Goddess[] = [
     title: 'Goddess of Love',
     path: '/aphrodite',
     description: 'Domain of beauty, love, and pleasure. Cultivate self-love and positive habits.',
-    toolName: 'Self-Care Tracker',
+    toolName: 'Self-Care Diary',
     color: 'rose',
     icon: <HeartIcon className="w-10 h-10" />,
   },
