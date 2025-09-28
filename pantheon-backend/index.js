@@ -151,25 +151,6 @@ app.post('/api/login', async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: 'Server error during login.', error });
     }
-
-    // 2. Compare passwords
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(400).json({ message: 'Invalid credentials.' });
-    }
-
-    // 3. Create a JWT
-    const token = jwt.sign(
-      { userId: user._id, name: user.name },
-      process.env.JWT_SECRET,
-      { expiresIn: '1h' }
-    );
-
-    res.status(200).json({ token, userName: user.name });
-
-  } catch (error) {
-    res.status(500).json({ message: 'Server error during login.', error });
-  }
 });
 
 // POST /api/journal - Create a new journal entry
