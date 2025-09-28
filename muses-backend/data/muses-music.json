@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "muse": "Calliope",
+    "title": "Calliope's Inspiration",
+    "artist": "The Muses",
+    "url": "https://your-s3-bucket-name.s3.your-region.amazonaws.com/muses-music/calliope.mp3"
+  },
+  {
+    "id": 2,
+    "muse": "Clio",
+    "title": "Clio's Wisdom",
+    "artist": "The Muses",
+    "url": "https://your-s3-bucket-name.s3.your-region.amazonaws.com/muses-music/clio.mp3"
+  },
+  {
+    "id": 3,
+    "muse": "Erato",
+    "title": "Erato's Love",
+    "artist": "The Muses",
+    "url": "https://your-s3-bucket-name.s3.your-region.amazonaws.com/muses-music/erato.mp3"
+  },
+  {
+    "id": 4,
+    "muse": "Euterpe",
+    "title": "Euterpe's Melody",
+    "artist": "The Muses",
+    "url": "https://your-s3-bucket-name.s3.your-region.amazonaws.com/muses-music/euterpe.mp3"
+  },
+  {
+    "id": 5,
+    "muse": "Melpomene",
+    "title": "Melpomene's Serenity",
+    "artist": "The Muses",
+    "url": "https://your-s3-bucket-name.s3.your-region.amazonaws.com/muses-music/melpomene.mp3"
+  },
+  {
+    "id": 6,
+    "muse": "Polyhymnia",
+    "title": "Polyhymnia's Hymn",
+    "artist": "The Muses",
+    "url": "https://your-s3-bucket-name.s3.your-region.amazonaws.com/muses-music/polyhymnia.mp3"
+  },
+  {
+    "id": 7,
+    "muse": "Terpsichore",
+    "title": "Terpsichore's Dance",
+    "artist": "The Muses",
+    "url": "https://your-s3-bucket-name.s3.your-region.amazonaws.com/muses-music/terpsichore.mp3"
+  },
+  {
+    "id": 8,
+    "muse": "Thalia",
+    "title": "Thalia's Harmony",
+    "artist": "The Muses",
+    "url": "https://your-s3-bucket-name.s3.your-region.amazonaws.com/muses-music/thalia.mp3"
+  },
+  {
+    "id": 9,
+    "muse": "Urania",
+    "title": "Urania's Contemplation",
+    "artist": "The Muses",
+    "url": "https://your-s3-bucket-name.s3.your-region.amazonaws.com/muses-music/urania.mp3"
+  }
+]

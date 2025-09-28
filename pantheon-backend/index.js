@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const fs = require('fs');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -68,6 +70,25 @@ app.get("/aphrodite", (req, res) => {
 
 // --- API Endpoints (Routes) ---
 
+// GET /api/music - Serves the Muses music playlist
+app.get('/api/music', (req, res) => {
+  const filePath = path.join(__dirname, '../muses-backend/data', 'muses-music.json');
+
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading JSON file:', err);
+      return res.status(500).send('Server Error');
+    }
+    try {
+      const musicData = JSON.parse(data);
+      res.json(musicData);
+    } catch (parseErr) {
+      console.error('Error parsing JSON:', parseErr);
+      res.status(500).send('Invalid JSON format');
+    }
+  });
+});
+
 // POST /api/register
 app.post('/api/register', async (req, res) => {
   try {
@@ -89,9 +110,9 @@ app.post('/api/register', async (req, res) => {
 
     // 4. Create a JWT
     const token = jwt.sign(
-        { userId: newUser._id, name: newUser.name },
-        process.env.JWT_SECRET,
-        { expiresIn: '1h' }
+      { userId: newUser._id, name: newUser.name },
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' }
     );
 
     res.status(201).json({ token, userName: newUser.name, userId: newUser._id });
@@ -101,11 +122,10 @@ app.post('/api/register', async (req, res) => {
   }
 });
 
-
 // POST /api/login
 app.post('/api/login', async (req, res) => {
-    try {
-        const { email, password } = req.body;
+  try {
+    const { email, password } = req.body;
 
         // 1. Find user by email
         const user = await User.findOne({ email });
@@ -131,6 +151,25 @@ app.post('/api/login', async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: 'Server error during login.', error });
     }
+
+    // 2. Compare passwords
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ message: 'Invalid credentials.' });
+    }
+
+    // 3. Create a JWT
+    const token = jwt.sign(
+      { userId: user._id, name: user.name },
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' }
+    );
+
+    res.status(200).json({ token, userName: user.name });
+
+  } catch (error) {
+    res.status(500).json({ message: 'Server error during login.', error });
+  }
 });
 
 // POST /api/journal - Create a new journal entry
