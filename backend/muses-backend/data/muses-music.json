@@ -4,62 +4,62 @@
     "muse": "Calliope",
     "title": "Calliope's Inspiration",
     "artist": "The Muses",
-    "url": "https://your-s3-bucket-name.s3.your-region.amazonaws.com/muses-music/calliope.mp3"
+    "url": "https://muses-music.s3.us-east-1.amazonaws.com/lofi-chill-background-music-330144.mp3"
   },
   {
     "id": 2,
     "muse": "Clio",
     "title": "Clio's Wisdom",
     "artist": "The Muses",
-    "url": "https://your-s3-bucket-name.s3.your-region.amazonaws.com/muses-music/clio.mp3"
+    "url": "https://muses-music.s3.us-east-1.amazonaws.com/kiss-of-autumn-instrumental-background-music-for-video-full-version-407613.mp3"
   },
   {
     "id": 3,
     "muse": "Erato",
     "title": "Erato's Love",
     "artist": "The Muses",
-    "url": "https://your-s3-bucket-name.s3.your-region.amazonaws.com/muses-music/erato.mp3"
+    "url": "https://muses-music.s3.us-east-1.amazonaws.com/lofi-chill-background-music-330144.mp3"
   },
   {
     "id": 4,
     "muse": "Euterpe",
     "title": "Euterpe's Melody",
     "artist": "The Muses",
-    "url": "https://your-s3-bucket-name.s3.your-region.amazonaws.com/muses-music/euterpe.mp3"
+    "url": "https://muses-music.s3.us-east-1.amazonaws.com/lofi-instrumental-2-409207.mp3"
   },
   {
     "id": 5,
     "muse": "Melpomene",
     "title": "Melpomene's Serenity",
     "artist": "The Muses",
-    "url": "https://your-s3-bucket-name.s3.your-region.amazonaws.com/muses-music/melpomene.mp3"
+    "url": "https://muses-music.s3.us-east-1.amazonaws.com/lofi-lofi-song-405233.mp3"
   },
   {
     "id": 6,
     "muse": "Polyhymnia",
     "title": "Polyhymnia's Hymn",
     "artist": "The Muses",
-    "url": "https://your-s3-bucket-name.s3.your-region.amazonaws.com/muses-music/polyhymnia.mp3"
+    "url": "https://muses-music.s3.us-east-1.amazonaws.com/midnight-notes-lofi-272341.mp3"
   },
   {
     "id": 7,
     "muse": "Terpsichore",
     "title": "Terpsichore's Dance",
     "artist": "The Muses",
-    "url": "https://your-s3-bucket-name.s3.your-region.amazonaws.com/muses-music/terpsichore.mp3"
+    "url": "https://muses-music.s3.us-east-1.amazonaws.com/lofi-lofi-song-405233.mp3"
   },
   {
     "id": 8,
     "muse": "Thalia",
     "title": "Thalia's Harmony",
     "artist": "The Muses",
-    "url": "https://your-s3-bucket-name.s3.your-region.amazonaws.com/muses-music/thalia.mp3"
+    "url": "https://muses-music.s3.us-east-1.amazonaws.com/soft-calm-piano-music-409067.mp3"
   },
   {
     "id": 9,
     "muse": "Urania",
     "title": "Urania's Contemplation",
     "artist": "The Muses",
-    "url": "https://your-s3-bucket-name.s3.your-region.amazonaws.com/muses-music/urania.mp3"
+    "url": "https://muses-music.s3.us-east-1.amazonaws.com/summernight-lofi-vibes-205065.mp3"
   }
 ]

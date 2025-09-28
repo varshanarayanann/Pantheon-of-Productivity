@@ -16,6 +16,13 @@ declare module '@google/genai' {
         history?: ChatHistoryMessage[];
       }): Chat;
     };
+    models: {
+      generateContent(params: {
+        model: string;
+        contents: any;
+        config?: any;
+      }): Promise<GenerateContentResponse>;
+    };
   }
 
   // A minimal definition for the Chat session object.
