@@ -2,64 +2,64 @@
   {
     "id": 1,
     "muse": "Calliope",
-    "title": "Epic Echoes",
+    "title": "Calliope's Inspiration",
     "artist": "The Muses",
-    "url": "..."
+    "url": "https://your-s3-bucket-name.s3.your-region.amazonaws.com/muses-music/calliope.mp3"
   },
   {
     "id": 2,
     "muse": "Clio",
-    "title": "Historic Whispers",
+    "title": "Clio's Wisdom",
     "artist": "The Muses",
-    "url": "..."
+    "url": "https://your-s3-bucket-name.s3.your-region.amazonaws.com/muses-music/clio.mp3"
   },
   {
     "id": 3,
     "muse": "Erato",
-    "title": "Lyrical Love",
+    "title": "Erato's Love",
     "artist": "The Muses",
-    "url": "..."
+    "url": "https://your-s3-bucket-name.s3.your-region.amazonaws.com/muses-music/erato.mp3"
   },
   {
     "id": 4,
     "muse": "Euterpe",
-    "title": "Melodies of Flutes",
+    "title": "Euterpe's Melody",
     "artist": "The Muses",
-    "url": "..."
+    "url": "https://your-s3-bucket-name.s3.your-region.amazonaws.com/muses-music/euterpe.mp3"
   },
   {
     "id": 5,
     "muse": "Melpomene",
-    "title": "Tragic Odes",
+    "title": "Melpomene's Serenity",
     "artist": "The Muses",
-    "url": "..."
+    "url": "https://your-s3-bucket-name.s3.your-region.amazonaws.com/muses-music/melpomene.mp3"
   },
   {
     "id": 6,
     "muse": "Polyhymnia",
-    "title": "Sacred Hymns",
+    "title": "Polyhymnia's Hymn",
     "artist": "The Muses",
-    "url": "..."
+    "url": "https://your-s3-bucket-name.s3.your-region.amazonaws.com/muses-music/polyhymnia.mp3"
   },
   {
     "id": 7,
     "muse": "Terpsichore",
-    "title": "Dance of Joy",
+    "title": "Terpsichore's Dance",
     "artist": "The Muses",
-    "url": "..."
+    "url": "https://your-s3-bucket-name.s3.your-region.amazonaws.com/muses-music/terpsichore.mp3"
   },
   {
     "id": 8,
     "muse": "Thalia",
-    "title": "Comedic Carols",
+    "title": "Thalia's Harmony",
     "artist": "The Muses",
-    "url": "..."
+    "url": "https://your-s3-bucket-name.s3.your-region.amazonaws.com/muses-music/thalia.mp3"
   },
   {
     "id": 9,
     "muse": "Urania",
-    "title": "Celestial Harmonies",
+    "title": "Urania's Contemplation",
     "artist": "The Muses",
-    "url": "..."
+    "url": "https://your-s3-bucket-name.s3.your-region.amazonaws.com/muses-music/urania.mp3"
   }
 ]
