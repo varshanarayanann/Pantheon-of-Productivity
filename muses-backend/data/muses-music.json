@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "muse": "Calliope",
+    "title": "Epic Echoes",
+    "artist": "The Muses",
+    "url": "..."
+  },
+  {
+    "id": 2,
+    "muse": "Clio",
+    "title": "Historic Whispers",
+    "artist": "The Muses",
+    "url": "..."
+  },
+  {
+    "id": 3,
+    "muse": "Erato",
+    "title": "Lyrical Love",
+    "artist": "The Muses",
+    "url": "..."
+  },
+  {
+    "id": 4,
+    "muse": "Euterpe",
+    "title": "Melodies of Flutes",
+    "artist": "The Muses",
+    "url": "..."
+  },
+  {
+    "id": 5,
+    "muse": "Melpomene",
+    "title": "Tragic Odes",
+    "artist": "The Muses",
+    "url": "..."
+  },
+  {
+    "id": 6,
+    "muse": "Polyhymnia",
+    "title": "Sacred Hymns",
+    "artist": "The Muses",
+    "url": "..."
+  },
+  {
+    "id": 7,
+    "muse": "Terpsichore",
+    "title": "Dance of Joy",
+    "artist": "The Muses",
+    "url": "..."
+  },
+  {
+    "id": 8,
+    "muse": "Thalia",
+    "title": "Comedic Carols",
+    "artist": "The Muses",
+    "url": "..."
+  },
+  {
+    "id": 9,
+    "muse": "Urania",
+    "title": "Celestial Harmonies",
+    "artist": "The Muses",
+    "url": "..."
+  }
+]

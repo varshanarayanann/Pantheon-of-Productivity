@@ -12,6 +12,7 @@ import NikePage from './pages/NikePage';
 import ErisPage from './pages/ErisPage';
 import { GODDESSES } from './constants';
 import { AuthProvider, AuthContext } from './context/AuthContext';
+import { MusicPlayerProvider } from './context/MPContext'; // Import the MusicPlayerProvider
 import LoginPage from './pages/LoginPage';
 
 // A consistent layout for all authenticated pages with a persistent header
@@ -93,7 +94,9 @@ const AppContent: React.FC = () => {
 const App: React.FC = () => {
   return (
     <AuthProvider>
-      <AppContent />
+      <MusicPlayerProvider> {/* The MusicPlayerProvider wraps the entire app */}
+        <AppContent />
+      </MusicPlayerProvider>
     </AuthProvider>
   );
 };
