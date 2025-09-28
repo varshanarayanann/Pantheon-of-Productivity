@@ -10,20 +10,21 @@
     "install-all": "npm install && npm install --prefix backend/hera-backend && npm install --prefix backend/pantheon-backend"
   },
   "dependencies": {
+    "@google/genai": "^1.21.0",
     "@types/styled-components": "^5.1.34",
     "axios": "^1.12.2",
+    "dotenv": "^17.2.2",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.2",
-    "styled-components": "^6.1.19",
-    "@google/genai": "^1.21.0"
+    "styled-components": "^6.1.19"
   },
   "devDependencies": {
     "@types/axios": "^0.9.36",
     "@types/node": "^22.14.0",
     "@vitejs/plugin-react": "^5.0.0",
+    "concurrently": "^8.2.2",
     "typescript": "~5.8.2",
-    "vite": "^6.2.0",
-    "concurrently": "^8.2.2"
+    "vite": "^6.2.0"
   }
 }
