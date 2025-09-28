@@ -1,0 +1,26 @@
+{
+  "name": "hera-ai-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Secure backend for the Hera AI Assistant",
+  "main": "server.ts",
+  "scripts": {
+    "start": "node --loader ts-node/esm server.ts",
+    "dev": "nodemon server.ts"
+  },
+  "dependencies": {
+    "@google/genai": "^1.21.0",
+    "@google/generative-ai": "^0.24.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^4.17.23",
+    "@types/node": "^20.14.9",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.2"
+  }
+}
