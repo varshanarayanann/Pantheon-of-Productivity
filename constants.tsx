@@ -74,7 +74,7 @@ export const GODDESSES: Goddess[] = [
     title: 'Goddess of Wisdom',
     path: '/athena',
     description: 'Domain of strategy, wisdom, and crafts. Weave your plans with divine intellect.',
-    toolName: 'Project Planner',
+    toolName: 'Ask Athena',
     color: 'indigo',
     icon: <LightBulbIcon className="w-10 h-10" />,
   },
