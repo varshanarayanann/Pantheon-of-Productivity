@@ -59,7 +59,7 @@ const LoginPage: React.FC = () => {
       // On success, the backend sends back a token and userName
       if (data.token && data.userName) {
         // NOTE: In a production app, you would securely store the JWT (data.token) here.
-        auth?.login(data.userName);
+        auth?.login(data.userName, data.userId);
       } else {
         alert('Login failed. Please check your credentials.');
       }

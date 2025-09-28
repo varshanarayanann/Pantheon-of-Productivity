@@ -26,6 +26,7 @@ const UserSchema = new mongoose.Schema({
   password: { type: String, required: true },
 });
 const User = mongoose.model('User', UserSchema);
+module.exports = { User, UserSchema };
 
 // --- API Endpoints (Routes) will go here ---
 // index.js (continued)
@@ -62,7 +63,7 @@ app.post('/api/register', async (req, res) => {
         { expiresIn: '1h' }
     );
 
-    res.status(201).json({ token, userName: newUser.name });
+    res.status(201).json({ token, userName: newUser.name, userId: newUser._id });
 
   } catch (error) {
     res.status(500).json({ message: 'Server error during registration.', error });
@@ -94,7 +95,7 @@ app.post('/api/login', async (req, res) => {
             { expiresIn: '1h' }
         );
 
-        res.status(200).json({ token, userName: user.name });
+        res.status(200).json({ token, userName: user.name, userId: user._id });
 
     } catch (error) {
         res.status(500).json({ message: 'Server error during login.', error });
