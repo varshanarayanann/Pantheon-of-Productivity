@@ -30,6 +30,10 @@ const User = mongoose.model('User', UserSchema);
 // --- API Endpoints (Routes) will go here ---
 // index.js (continued)
 
+app.get("/aphrodite", (req, res) => {
+  res.json({ message: "Hello from server!" });
+});
+
 // --- API Endpoints (Routes) ---
 
 // POST /api/register

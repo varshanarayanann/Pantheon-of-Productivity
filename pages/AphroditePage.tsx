@@ -1,4 +1,3 @@
-
 import React, {useEffect, useState} from 'react';
 import GoddessPageLayout from '../components/GoddessPageLayout';
 import { GODDESSES } from '../constants';
@@ -7,8 +6,8 @@ const AphroditePage: React.FC = () => {
   const aphrodite = GODDESSES.find(g => g.id === 'aphrodite')!;
   const [data, setData] = useState(null);
 
-  React.useEffect(() => {
-    fetch('http://localhost:5000/aphrodite')
+  useEffect(() => {
+    fetch('http://localhost:5001/aphrodite')
       .then(response => response.json())
       .then(data => setData(data.message))
   }, []);
