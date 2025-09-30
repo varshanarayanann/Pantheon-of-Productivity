@@ -46,7 +46,7 @@
     "muse": "Terpsichore",
     "title": "Terpsichore's Dance",
     "artist": "The Muses",
-    "url": "https://your-s3-bucket-name.s3.your-region.amazonaws.com/muses-music/terpsichore.mp3"
+    "url": "https://muses-music.s3.us-east-1.amazonaws.com/lofi-lofi-song-405233.mp3"
   },
   {
     "id": 8,
