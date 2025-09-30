@@ -33,3 +33,31 @@ export interface Task {
   completed: boolean;
   dueDate?: string; // Storing as ISO string for simplicity
 }
+export interface Message {
+  id: string;
+  text: string;
+  sender: "user" | "bot" | "error";
+}
+
+export interface PlanStep {
+  id: string;
+  text: string;
+  completed: boolean;
+}
+export type Difficulty = "Easy" | "Medium" | "Hard";
+
+export interface Goal {
+  id: string;
+  title: string;
+  description: string;
+  difficulty: Difficulty;
+  completed: boolean;
+  dateAdded: string;
+  dateCompleted?: string;
+}
+
+export interface LevelUpResponse {
+  message: string;
+  tip: string;
+}
+

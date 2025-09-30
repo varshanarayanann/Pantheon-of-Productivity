@@ -1,4 +1,6 @@
 
+
+
 import * as dotenv from "dotenv";
 import path from "path"; // Ensure you import path
 // FIX: In an ES module, __dirname is not available by default.
@@ -8,11 +10,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.resolve(__dirname, ".env.local") }); // Configure dotenv explicitly
 
-// FIX: To avoid conflicts with global DOM types for Request and Response,
-// we use the default express import and qualify all express types with the
-// `express` namespace (e.g., `express.Request`). This resolves all
-// subsequent typing errors in this file.
-import express from "express";
+// FIX: Use qualified types from express (e.g., `express.Request`) to avoid conflicts with global DOM types.
+// This resolves errors where properties like `body` or `status` were not found on Request/Response objects.
+import express, { Express } from "express";
 import cors from "cors";
 //import "dotenv/config"; //Removed due to Manual configuration
 import {
@@ -25,8 +25,8 @@ import {
 // in a way that is compatible with TypeScript's type definitions for Node.js ES modules.
 import { exit } from "process";
 
-// FIX: Let type inference determine the app type to avoid resolution issues.
-const app = express();
+// FIX: Explicitly type `app` as `Express` to ensure correct type resolution.
+const app: Express = express();
 app.use(cors());
 app.use(express.json());
 
@@ -121,10 +121,10 @@ interface ChatMessage {
   text: string;
 }
 
-// FIX: Qualify Request and Response with the express namespace to avoid conflicts with global DOM types.
-app.post("/api/chat", async (req: express.Request<never, any, { message: string; history: ChatMessage[]; }>, res: express.Response) => {
+// FIX: Use qualified `express.Request` and `express.Response` types to ensure correct type resolution.
+app.post("/api/chat", async (req: express.Request, res: express.Response) => {
   try {
-    // FIX: Removed `as` cast as the type is now provided in the handler signature.
+    // FIX: The `req.body` property is now correctly recognized with the proper types.
     const { message, history: clientHistory } = req.body;
 
     if (!message) {
