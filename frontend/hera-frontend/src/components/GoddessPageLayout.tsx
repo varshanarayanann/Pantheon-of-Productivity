@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import type { Goddess } from '../../../types.ts';
+import type { Goddess } from '../../../../types.js';
 
 interface GoddessPageLayoutProps {
   goddess: Goddess;

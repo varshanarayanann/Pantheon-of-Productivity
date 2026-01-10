@@ -1,20 +1,20 @@
 import React, { useContext } from 'react';
 import { HashRouter, Routes, Route, Navigate, Outlet, Link } from 'react-router-dom';
-import HomePage from './components/HomePage';
-import HeraPage from './pages/HeraPage';
-import AthenaPage from './pages/AthenaPage';
-import AphroditePage from './pages/AphroditePage';
-import ArtemisPage from './pages/ArtemisPage';
-import PersephonePage from './pages/PersephonePage';
-import GaiaPage from './pages/GaiaPage';
-import MusesPage from './pages/MusesPage';
-import NikePage from './pages/NikePage';
-import ErisPage from './pages/ErisPage';
-import { GODDESSES } from '../../constants';
-import { AuthProvider, AuthContext } from './context/AuthContext';
-import { MusicPlayerProvider } from './context/MPContext';
-import LoginPage from './pages/LoginPage';
-import { ThemeProvider } from './context/ThemeContext';
+import HomePage from './components/HomePage.js';
+import HeraPage from './pages/HeraPage.js';
+import AthenaPage from './pages/AthenaPage.js';
+import AphroditePage from './pages/AphroditePage.js';
+import ArtemisPage from './pages/ArtemisPage.js';
+import PersephonePage from './pages/PersephonePage.js';
+import GaiaPage from './pages/GaiaPage.js';
+import MusesPage from './pages/MusesPage.js';
+import NikePage from './pages/NikePage.js';
+import ErisPage from './pages/ErisPage.js';
+import { GODDESSES } from '../../../constants.js';
+import { AuthProvider, AuthContext } from './context/AuthContext.js';
+import { MusicPlayerProvider } from './context/MPContext.js';
+import LoginPage from './pages/LoginPage.js';
+import { ThemeProvider } from './context/ThemeContext.js';
 
 // This is the main layout for authenticated users, providing a consistent header and navigation.
 const AppLayout: React.FC = () => {

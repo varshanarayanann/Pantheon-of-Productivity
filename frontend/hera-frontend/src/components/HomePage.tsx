@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { GODDESSES } from '../../../constants';
-import type { Goddess } from '../../../types.ts';
-import OrbitalButton from './OrbitalButton';
-import TeamCredits from './TeamCredits';
+import { GODDESSES } from '../../../../constants.js';
+import type { Goddess } from '../../../../types.js';
+import OrbitalButton from './OrbitalButton.js';
+import TeamCredits from './TeamCredits.js';
 
 const HomePage: React.FC = () => {
   const [hoveredGoddess, setHoveredGoddess] = useState<Goddess | null>(null);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import GoddessPageLayout from '../components/GoddessPageLayout';
-import { GODDESSES } from '../../../constants';
+import GoddessPageLayout from '../components/GoddessPageLayout.js';
+import { GODDESSES } from '../../../../constants.js';
 
 
 // --- 1. SVG ICONS ---

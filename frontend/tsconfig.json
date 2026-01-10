@@ -10,10 +10,10 @@
     "allowJs": true,
     "noEmit": true,
     "skipLibCheck": true,
-    "baseUrl": "./src",
+    "baseUrl": "hera-frontend/src",
     "paths": {
       "@/*": ["*"]
     }
   },
-  "include": ["src"]
+  "include": ["hera-frontend/src"]
 }

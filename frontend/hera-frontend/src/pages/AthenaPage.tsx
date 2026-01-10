@@ -1,8 +1,8 @@
 // src/pages/AthenaPage.tsx
 
 import React, { useState, useEffect, useRef } from 'react';
-import GoddessPageLayout from '../components/GoddessPageLayout';
-import { GODDESSES } from '../../../constants';
+import GoddessPageLayout from '../components/GoddessPageLayout.js';
+import { GODDESSES } from '../../../../constants.js';
 
 const AthenaPage: React.FC = () => {
   const athena = GODDESSES.find(g => g.id === 'athena')!;
