@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "lib": ["ES2022"],             // Node-only
+    "module": "NodeNext",          // Required for ESM
+    "moduleResolution": "NodeNext",
+    "types": ["node"],             // Node globals like process, Buffer
+    "allowJs": true,               // Include JS files
+    "checkJs": false               // Do not type-check JS files
+  },
+  "include": ["server.ts", "**/*.ts", "**/*.js"]
+}

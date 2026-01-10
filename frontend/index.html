@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pantheon of Productivity</title>
+
+    <!-- ✅ Tailwind CDN (exactly as original) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- ✅ Original Tailwind config -->
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              serif: ['Georgia', 'serif'],
+              sans: ['Inter', 'sans-serif'],
+            },
+          },
+        },
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <!-- ✅ Vite entry -->
+    <script type="module" src="/src/index.tsx"></script>
+  </body>
+</html>

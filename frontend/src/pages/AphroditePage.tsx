@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useContext} from 'react';
-import { useAuth } from '../../context/AuthContext';
-import GoddessPageLayout from '../../components/GoddessPageLayout';
-import { GODDESSES } from '../../constants';
+import { useAuth } from '../context/AuthContext';
+import GoddessPageLayout from '../components/GoddessPageLayout';
+import { GODDESSES } from '../../../constants';
 
 const AphroditePage: React.FC = () => {
   const aphrodite = GODDESSES.find(g => g.id === 'aphrodite')!;

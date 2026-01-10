@@ -15,7 +15,7 @@ export interface BackendResponse {
 export const sendMessage = async (message: string, history: ChatMessage[]): Promise<BackendResponse> => {
   try {
     // This URL must match the address of your running backend server.
-    const backendUrl = 'http://localhost:3001/api/chat';
+    const backendUrl = 'http://localhost:3002/api/chat';
 
     const response = await fetch(backendUrl, {
       method: 'POST',

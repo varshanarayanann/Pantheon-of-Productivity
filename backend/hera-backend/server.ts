@@ -1,68 +1,54 @@
-
-
-
 import * as dotenv from "dotenv";
-import path from "path"; // Ensure you import path
-// FIX: In an ES module, __dirname is not available by default.
-// We can derive it from import.meta.url.
-import { fileURLToPath } from 'url';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-dotenv.config({ path: path.resolve(__dirname, ".env.local") }); // Configure dotenv explicitly
-
-// FIX: Use qualified types from express (e.g., `express.Request`) to avoid conflicts with global DOM types.
-// This resolves errors where properties like `body` or `status` were not found on Request/Response objects.
-import express, { Express } from "express";
+import path from "path";
+import { fileURLToPath } from "url";
+import express, { Express, Request, Response } from "express";
 import cors from "cors";
-//import "dotenv/config"; //Removed due to Manual configuration
 import {
   GoogleGenAI,
   Type,
   Chat,
   GenerateContentResponse,
 } from "@google/genai";
-// FIX: Import 'exit' from the 'process' module to correctly handle process termination
-// in a way that is compatible with TypeScript's type definitions for Node.js ES modules.
-import { exit } from "process";
 
-// FIX: Explicitly type `app` as `Express` to ensure correct type resolution.
+
+
+// Get __dirname in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Load .env file
+dotenv.config({ path: path.resolve(__dirname, ".env") });
+
+// Initialize Express
 const app: Express = express();
 app.use(cors());
 app.use(express.json());
 
-console.log("API Key:", process.env.API_KEY); // Add this for debugging
-console.log("process.env:", process.env); // Debug: Log process.env
+// Check for API_KEY
 if (!process.env.API_KEY) {
-  console.error(
-    "API_KEY environment variable not set. Please set it in a .env file."
+  console.warn(
+    "⚠️  API_KEY environment variable not set. Hera AI functionality will not work."
   );
-  exit(1);
+} else {
+  console.log("✅ API_KEY loaded successfully.");
 }
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Initialize GoogleGenAI only if API_KEY exists
+const ai = process.env.API_KEY
+  ? new GoogleGenAI({ apiKey: process.env.API_KEY })
+  : null;
 
+// --- Tool Definitions ---
 const addCalendarEventFunctionDeclaration = {
   name: "addCalendarEvent",
   parameters: {
     type: Type.OBJECT,
     description: "Adds an event to the calendar.",
     properties: {
-      title: {
-        type: Type.STRING,
-        description: "The title or name of the event.",
-      },
-      startTime: {
-        type: Type.STRING,
-        description: `The start date and time of the event in ISO 8601 format (e.g., '2024-07-26T10:00:00Z').`,
-      },
-      endTime: {
-        type: Type.STRING,
-        description: `The end date and time of the event in ISO 8601 format (e.g., '2024-07-26T14:00:00Z'). If not provided, it defaults to one hour after the start time.`,
-      },
-      description: {
-        type: Type.STRING,
-        description: "A brief description of the event. Optional.",
-      },
+      title: { type: Type.STRING, description: "Title of the event." },
+      startTime: { type: Type.STRING, description: "Start time in ISO 8601 format." },
+      endTime: { type: Type.STRING, description: "End time in ISO 8601 format. Defaults 1h after start." },
+      description: { type: Type.STRING, description: "Optional description." },
     },
     required: ["title", "startTime"],
   },
@@ -72,100 +58,89 @@ const addTaskFunctionDeclaration = {
   name: "addTask",
   parameters: {
     type: Type.OBJECT,
-    description: "Adds a new assignment or habit to the task tracker.",
+    description: "Adds a task or assignment.",
     properties: {
-      title: {
-        type: Type.STRING,
-        description: "The title or name of the task.",
-      },
-      type: {
-        type: Type.STRING,
-        description:
-          "The type of task, which must be either 'assignment' or 'habit'.",
-      },
-      dueDate: {
-        type: Type.STRING,
-        description:
-          "The due date for the task in ISO 8601 format (e.g., '2024-07-28T23:59:59Z'). This is only required for assignments.",
-      },
+      title: { type: Type.STRING, description: "Title of the task." },
+      type: { type: Type.STRING, description: "Either 'assignment' or 'habit'." },
+      dueDate: { type: Type.STRING, description: "Due date in ISO 8601 format for assignments." },
     },
     required: ["title", "type"],
   },
 };
 
 const tools = [
-  {
-    functionDeclarations: [
-      addCalendarEventFunctionDeclaration,
-      addTaskFunctionDeclaration,
-    ],
-  },
+  { functionDeclarations: [addCalendarEventFunctionDeclaration, addTaskFunctionDeclaration] },
 ];
 
+// --- Chat Config ---
 const chatConfig = {
   model: "gemini-2.5-flash",
   config: {
-    systemInstruction: `You are Hera, a friendly and helpful AI assistant. Your primary functions are to help users manage their calendar and their tasks.
-- When a user asks to schedule something, use the 'addCalendarEvent' tool.
-- When a user asks to add a task, assignment, or habit, use the 'addTask' tool. For assignments, try to get a due date.
-- Always confirm your actions.
-- Be conversational and clear.
-- Use the current date for context if the user is vague about dates (e.g., 'tomorrow'). Assume the current date is ${new Date().toISOString()}.`,
+    systemInstruction: `You are Hera, a friendly AI assistant. Your main job is to help manage calendar events and tasks. Current date: ${new Date().toISOString()}`,
     tools,
   },
 };
 
+// --- Types ---
 interface ChatMessage {
-  id: string;
-  sender: "user" | "bot";
+  role: "user" | "assistant" | "model";
   text: string;
 }
 
-// FIX: Use qualified `express.Request` and `express.Response` types to ensure correct type resolution.
-app.post("/api/chat", async (req: express.Request, res: express.Response) => {
+
+
+interface GeminiHistoryItem {
+  role: "user" | "model";
+  parts: { text: string }[];
+}
+
+// --- API Endpoint ---
+app.post("/api/chat", async (req: Request, res: Response) => {
+  if (!ai) {
+    return res.status(503).json({ error: "Hera AI is not configured. Missing API_KEY." });
+  }
+
   try {
-    // FIX: The `req.body` property is now correctly recognized with the proper types.
-    const { message, history: clientHistory } = req.body;
+    const { message, history: clientHistory } = req.body as {
+      message: string;
+      history?: ChatMessage[];
+    };
 
-    if (!message) {
-      return res.status(400).json({ error: "Message is required" });
-    }
+    if (!message) return res.status(400).json({ error: "Message is required." });
 
-    let geminiHistory = (clientHistory || []).map((msg) => ({
-      role: msg.sender === "user" ? ("user" as const) : ("model" as const),
-      parts: [{ text: msg.text }],
-    }));
+    // Map client messages to Gemini chat history
+    // Map + sanitize client messages to Gemini chat history
+const geminiHistory: GeminiHistoryItem[] = (clientHistory || [])
+  .filter(
+    (msg): msg is ChatMessage =>
+      !!msg &&
+      typeof msg.text === "string" &&
+      (msg.role === "user" || msg.role === "model" || msg.role === "assistant")
+  )
+  .map((msg) => ({
+    role: msg.role === "assistant" ? "model" : msg.role,
+    parts: [{ text: msg.text }],
+  }));
 
-    // Ensure history starts with a user message if it exists, as required by the API
-    const firstUserMessageIndex = geminiHistory.findIndex(
-      (h) => h.role === "user"
-    );
-    if (firstUserMessageIndex > -1) {
-      geminiHistory = geminiHistory.slice(firstUserMessageIndex);
-    } else {
-      geminiHistory = [];
-    }
 
+    // Create a chat instance
     const chat: Chat = ai.chats.create({
       ...chatConfig,
       history: geminiHistory,
     });
 
-    const response: GenerateContentResponse = await chat.sendMessage({
-      message,
-    });
+    // Send message to Gemini AI
+    const response: GenerateContentResponse = await chat.sendMessage({ message });
 
-    res.json({
-      text: response.text,
-      functionCalls: response.functionCalls,
-    });
+    res.json({ text: response.text, functionCalls: response.functionCalls });
   } catch (error) {
     console.error("Error processing chat message:", error);
-    res.status(500).json({ error: "Failed to communicate with AI service" });
+    res.status(500).json({ error: "Failed to communicate with AI service." });
   }
 });
 
+// --- Start Server ---
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`🚀 Hera backend running on port ${PORT}`);
 });

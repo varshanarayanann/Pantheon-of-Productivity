@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { GODDESSES } from '../constants';
-import type { Goddess } from '../types';
+import { GODDESSES } from '../../../constants';
+import type { Goddess } from '../../../types.ts';
 import OrbitalButton from './OrbitalButton';
+import TeamCredits from './TeamCredits';
 
 const HomePage: React.FC = () => {
   const [hoveredGoddess, setHoveredGoddess] = useState<Goddess | null>(null);
@@ -92,6 +93,11 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </div>
+            {/* Credits / Team dropdown */}
+      <div className="fixed bottom-4 right-4 z-50">
+        <TeamCredits />
+      </div>
+
     </>
   );
 };

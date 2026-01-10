@@ -1,4 +1,5 @@
 // index.js
+const { GoogleGenAI } = require('@google/genai');
 
 require('dotenv').config(); // Loads variables from .env file
 const express = require('express');
@@ -184,6 +185,99 @@ app.post('/api/journal', async (req, res) => {
         res.status(500).json({ message: 'Server error creating journal entry.', error });
     }
 });
+
+// POST /api/athena - Sends a message to Athena AI
+app.post('/api/athena', async (req, res) => {
+  try {
+    const { message } = req.body;
+
+    if (!message) {
+      return res.status(400).json({ error: 'Message is required' });
+    }
+
+    // Make sure API_KEY is set in .env
+    if (!process.env.API_KEY) {
+      return res.status(500).json({ error: 'API_KEY environment variable not set' });
+    }
+
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+
+    // Create a new chat session
+    const chat = ai.chats.create({
+      model: 'gemini-2.5-flash',
+      config: {
+        systemInstruction: 'You are Athena, the Greek goddess of wisdom, strategy, and crafts. Act as a wise and patient tutor.',
+      },
+    });
+
+    // Send the user message
+    const response = await chat.sendMessage({ message });
+
+    // Respond to frontend
+    res.json({ text: response.text });
+
+  } catch (err) {
+    console.error('Athena API error:', err);
+    res.status(500).json({ error: 'Failed to communicate with Athena' });
+  }
+});
+
+app.post('/api/hera', async (req, res) => {
+  try {
+    const { message, history } = req.body;
+
+    // Ensure API_KEY is set
+    if (!process.env.API_KEY) {
+      return res.status(500).json({ text: "Server misconfiguration: API_KEY not set." });
+    }
+
+    // Initialize GenAI client
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+
+    // Create a chat session
+    const chat = ai.chats.create({
+      model: 'gemini-2.5-flash',
+      config: {
+        systemInstruction: "You are Hera, the Greek goddess of marriage, family, and protection. You are wise, supportive, and nurturing. Speak with calm authority and guide users gently.",
+      },
+    });
+
+    // Add conversation history if available
+    const conversation = history?.map(h => ({
+      role: h.role,
+      text: h.text,
+    })) || [];
+
+    // Send the latest user message
+    const response = await chat.sendMessage({ message, history: conversation });
+
+    // Respond to the frontend
+    res.json({ text: response.text });
+
+  } catch (error) {
+    console.error("Error in /api/hera:", error);
+    res.status(500).json({ text: "Hera is currently unavailable. Please try again later." });
+  }
+});
+
+// POST /api/chat - Chat endpoint for Hera/Athena
+app.post('/api/chat', async (req, res) => {
+  try {
+    const { message, history } = req.body;
+
+    // Here, you would send the message to the AI or process it
+    // For now, let's just echo it back as a placeholder
+    const aiResponse = {
+      text: `Hera received your message: "${message}" and remembers ${history.length} previous messages.`,
+    };
+
+    res.json(aiResponse);
+  } catch (error) {
+    console.error('Error handling /api/chat:', error);
+    res.status(500).json({ text: "Server error while processing your message." });
+  }
+});
+
 
 // GET /api/journal/:userId - Get all journal entries for a user
 app.get('/api/journal/:userId', async (req, res) => {

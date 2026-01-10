@@ -1,19 +1,19 @@
 import React, { useContext } from 'react';
 import { HashRouter, Routes, Route, Navigate, Outlet, Link } from 'react-router-dom';
 import HomePage from './components/HomePage';
-import HeraPage from './frontend/pages/HeraPage';
-import AthenaPage from './frontend/pages/AthenaPage';
-import AphroditePage from './frontend/pages/AphroditePage';
-import ArtemisPage from './frontend/pages/ArtemisPage';
-import PersephonePage from './frontend/pages/PersephonePage';
-import GaiaPage from './frontend/pages/GaiaPage';
-import MusesPage from './frontend/pages/MusesPage';
-import NikePage from './frontend/pages/NikePage';
-import ErisPage from './frontend/pages/ErisPage';
-import { GODDESSES } from './constants';
+import HeraPage from './pages/HeraPage';
+import AthenaPage from './pages/AthenaPage';
+import AphroditePage from './pages/AphroditePage';
+import ArtemisPage from './pages/ArtemisPage';
+import PersephonePage from './pages/PersephonePage';
+import GaiaPage from './pages/GaiaPage';
+import MusesPage from './pages/MusesPage';
+import NikePage from './pages/NikePage';
+import ErisPage from './pages/ErisPage';
+import { GODDESSES } from '../../constants';
 import { AuthProvider, AuthContext } from './context/AuthContext';
 import { MusicPlayerProvider } from './context/MPContext';
-import LoginPage from './frontend/pages/LoginPage';
+import LoginPage from './pages/LoginPage';
 import { ThemeProvider } from './context/ThemeContext';
 
 // This is the main layout for authenticated users, providing a consistent header and navigation.

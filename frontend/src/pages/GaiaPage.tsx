@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
-import GoddessPageLayout from '../../components/GoddessPageLayout';
-import { GODDESSES } from '../../constants';
+import GoddessPageLayout from '../components/GoddessPageLayout';
+import { GODDESSES } from '../../../constants';
 
 // Define the new color palette
 const COLORS = {

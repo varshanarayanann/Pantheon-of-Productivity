@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Goal, Difficulty, LevelUpResponse } from "../../types";
-import { generateLevelUpMessage } from "../hera-frontend/services/geminiServices";
+import { Goal, Difficulty, LevelUpResponse } from "../../../types";
+import { generateLevelUpMessage } from "../../hera-frontend/services/geminiServices";
 
 const XP_VALUES: Record<Difficulty, number> = {
   Easy: 10,

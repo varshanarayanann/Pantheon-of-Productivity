@@ -1,6 +1,6 @@
 import React from "react";
-import GoddessPageLayout from "../../components/GoddessPageLayout";
-import { GODDESSES } from "../../constants";
+import GoddessPageLayout from "../components/GoddessPageLayout";
+import { GODDESSES } from "../../../constants";
 import NikeApp from "./nike";
 
 const NikePage: React.FC = () => {

@@ -1,8 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
-import GoddessPageLayout from '../../components/GoddessPageLayout';
-import { GODDESSES, SunIcon, MoonIcon } from '../../constants';
-import { useTheme } from '../../context/ThemeContext';
+import GoddessPageLayout from '../components/GoddessPageLayout';
+import { GODDESSES, SunIcon, MoonIcon } from '../../../constants';
+import { useTheme } from '../context/ThemeContext';
 
 const ArtemisPage: React.FC = () => {
   const artemis = GODDESSES.find(g => g.id === 'artemis')!;
