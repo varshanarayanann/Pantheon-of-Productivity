@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
 
   return {
-    root: '.', // ✅ frontend is the root
+    root: path.resolve(__dirname, ".."), // ✅ frontend is the root
     server: {
       port: 3000,
       host: "0.0.0.0",
