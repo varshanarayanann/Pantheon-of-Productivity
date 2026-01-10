@@ -16,7 +16,10 @@ export default defineConfig(({ mode }) => {
       host: "0.0.0.0",
     },
     root: '.',
-    plugins: [react()],
+    plugins: [react({
+        // ✅ Use automatic JSX runtime (React 17+)
+        jsxRuntime: "automatic"
+      })],
     define: {
       "process.env.API_KEY": JSON.stringify(env.GEMINI_API_KEY),
     },
