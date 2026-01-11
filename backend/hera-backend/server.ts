@@ -1,4 +1,4 @@
-import * as dotenv from "dotenv";
+import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
 import express, { Express, Request, Response } from "express";
@@ -17,7 +17,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Load .env file
-dotenv.config({ path: path.resolve(__dirname, ".env") });
+dotenv.config();
 
 // Initialize Express
 const app: Express = express();
@@ -140,7 +140,7 @@ const geminiHistory: GeminiHistoryItem[] = (clientHistory || [])
 });
 
 // --- Start Server ---
-const PORT = process.env.PORT || 3001;
+const PORT = Number(process.env.PORT) || 8080;
 app.listen(PORT, () => {
   console.log(`🚀 Hera backend running on port ${PORT}`);
 });
