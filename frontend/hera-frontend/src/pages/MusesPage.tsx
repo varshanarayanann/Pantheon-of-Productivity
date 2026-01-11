@@ -44,8 +44,11 @@ const MusesPage: React.FC = () => {
   useEffect(() => {
       const fetchMusic = async () => {
           try {
-              const response = await axios.get('http://localhost:5001/api/music');
-              setTracks(response.data);
+              const response = await axios.get<Track[]>(
+  `${process.env.NEXT_PUBLIC_PANTHEON_BACKEND_URL}/api/music`
+);
+setTracks(response.data);
+
           } catch (error) {
               console.error('Error fetching music data:', error);
           }

@@ -3,6 +3,13 @@ import { useAuth } from '../context/AuthContext.js';
 import GoddessPageLayout from '../components/GoddessPageLayout.js';
 import { GODDESSES } from '../constants.js';
 
+interface JournalEntry {
+  _id: string;
+  title: string;
+  content: string;
+  mood?: number;
+}
+
 const AphroditePage: React.FC = () => {
   const aphrodite = GODDESSES.find(g => g.id === 'aphrodite')!;
   const [data, setData] = useState(null);
@@ -11,9 +18,11 @@ const AphroditePage: React.FC = () => {
   const [content, setContent] = useState("");
   const [mood, setMood] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [existingEntry, setExistingEntry] = useState(null);
+  const [existingEntry, setExistingEntry] = useState<JournalEntry | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const { user } = useAuth();
+
+  
 
   // useEffect(() => {
   //   fetch('http://localhost:5001/aphrodite')
@@ -33,7 +42,7 @@ const AphroditePage: React.FC = () => {
     
     setIsLoading(true);
     try {
-      const response = await fetch(`http://localhost:5001/api/journal/${user.id}/today`);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_PANTHEON_BACKEND_URL}/api/journal/${user.id}/today`);
       const entry = await response.json();
       
       if (entry && entry._id) {
@@ -78,7 +87,7 @@ const AphroditePage: React.FC = () => {
 
       if (existingEntry) {
         // Update existing entry
-        response = await fetch(`http://localhost:5001/api/journal/${existingEntry._id}`, {
+        response = await fetch(`${process.env.NEXT_PUBLIC_PANTHEON_BACKEND_URL}/api/journal/${existingEntry._id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -92,7 +101,7 @@ const AphroditePage: React.FC = () => {
         successMessage = "Journal entry updated successfully!";
       } else {
         // Create new entry
-        response = await fetch('http://localhost:5001/api/journal', {
+        response = await fetch(`${process.env.NEXT_PUBLIC_PANTHEON_BACKEND_URL}/api/journal`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

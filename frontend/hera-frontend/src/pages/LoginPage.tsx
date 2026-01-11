@@ -31,7 +31,7 @@ const LoginPage: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const API_URL = 'http://localhost:5001/api';
+    const API_URL = `${process.env.NEXT_PUBLIC_PANTHEON_BACKEND_URL}/api`;
 
     const endpoint = isLoginView ? `${API_URL}/login` : `${API_URL}/register`;
     

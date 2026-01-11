@@ -36,7 +36,7 @@ const AthenaPage: React.FC = () => {
 
     try {
       // Send user input to your backend
-      const res = await fetch('http://localhost:5001/api/athena', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_PANTHEON_BACKEND_URL}/api/athena`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: userMessage.text }),
