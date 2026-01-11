@@ -10,7 +10,7 @@ import GaiaPage from './pages/GaiaPage.js';
 import MusesPage from './pages/MusesPage.js';
 import NikePage from './pages/NikePage.js';
 import ErisPage from './pages/ErisPage.js';
-import { GODDESSES } from '../../../constants.js';
+import { GODDESSES } from './constants.js';
 import { AuthProvider, AuthContext } from './context/AuthContext.js';
 import { MusicPlayerProvider } from './context/MPContext.js';
 import LoginPage from './pages/LoginPage.js';

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GODDESSES } from '../../../../constants.js';
+import { GODDESSES } from '../constants.js';
 import type { Goddess } from '../../../../types.js';
 import OrbitalButton from './OrbitalButton.js';
 import TeamCredits from './TeamCredits.js';

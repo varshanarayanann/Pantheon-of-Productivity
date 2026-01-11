@@ -3,7 +3,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import GoddessPageLayout from '../components/GoddessPageLayout.js';
-import { GODDESSES } from '../../../../constants.js';
+import { GODDESSES } from '../constants.js';
 
 // Define the new color palette
 const COLORS = {

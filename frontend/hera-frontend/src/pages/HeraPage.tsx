@@ -1,6 +1,6 @@
 import React from "react";
 import GoddessPageLayout from "../components/GoddessPageLayout.js";
-import { GODDESSES } from "../../../../constants.js";
+import { GODDESSES } from "../constants.js";
 import App from "../../app.js"; // Import the App component
 
 const HeraPage: React.FC = () => {
