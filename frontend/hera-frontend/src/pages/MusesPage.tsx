@@ -42,21 +42,6 @@ const MusesPage: React.FC = () => {
   }, []);
 
   useEffect(() => {
-      const fetchMusic = async () => {
-          try {
-              const response = await axios.get<Track[]>(
-  `${process.env.NEXT_PUBLIC_PANTHEON_BACKEND_URL}/api/music`
-);
-setTracks(response.data);
-
-          } catch (error) {
-              console.error('Error fetching music data:', error);
-          }
-      };
-      fetchMusic();
-  }, []);
-
-  useEffect(() => {
   console.log(
     "BACKEND URL:",
     process.env.NEXT_PUBLIC_PANTHEON_BACKEND_URL
@@ -75,6 +60,7 @@ setTracks(response.data);
 
   fetchMusic();
 }, []);
+
 
 
   const playTrack = (url: string) => {
