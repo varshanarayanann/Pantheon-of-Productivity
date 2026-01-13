@@ -72,7 +72,7 @@ app.get("/aphrodite", (req, res) => {
 
 // GET /api/music - Serves the Muses music playlist
 app.get('/api/music', (req, res) => {
-  const filePath = path.join(__dirname, '../muses-backend/data', 'muses-music.json');
+  const filePath = path.join(__dirname, 'data', 'muses-music.json');
 
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
@@ -80,8 +80,9 @@ app.get('/api/music', (req, res) => {
       return res.status(500).send('Server Error');
     }
     try {
-      const musicData = JSON.parse(data);
-      res.json(musicData);
+      const musicData = require('./data/muses-music.json');
+      app.get('/api/music', (req, res) => {
+      res.json(musicData);});
     } catch (parseErr) {
       console.error('Error parsing JSON:', parseErr);
       res.status(500).send('Invalid JSON format');
