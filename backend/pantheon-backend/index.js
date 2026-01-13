@@ -71,24 +71,43 @@ app.get("/aphrodite", (req, res) => {
 // --- API Endpoints (Routes) ---
 
 // GET /api/music - Serves the Muses music playlist
+// app.get('/api/music', (req, res) => {
+//   const filePath = path.join(__dirname, 'data', 'muses-music.json');
+
+//   fs.readFile(filePath, 'utf8', (err, data) => {
+//     if (err) {
+//       console.error('Error reading JSON file:', err);
+//       return res.status(500).send('Server Error');
+//     }
+//     try {
+//       const musicData = require('./data/muses-music.json');
+//       app.get('/api/music', (req, res) => {
+//       res.json(musicData);});
+//     } catch (parseErr) {
+//       console.error('Error parsing JSON:', parseErr);
+//       res.status(500).send('Invalid JSON format');
+//     }
+//   });
+// });
+
 app.get('/api/music', (req, res) => {
   const filePath = path.join(__dirname, 'data', 'muses-music.json');
+
+  console.log('Looking for music file at:', filePath);
+  console.log('Directory contents:', fs.readdirSync(__dirname));
+  console.log('Data dir contents:', fs.existsSync(path.join(__dirname, 'data'))
+    ? fs.readdirSync(path.join(__dirname, 'data'))
+    : 'NO DATA DIR');
 
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
       console.error('Error reading JSON file:', err);
       return res.status(500).send('Server Error');
     }
-    try {
-      const musicData = require('./data/muses-music.json');
-      app.get('/api/music', (req, res) => {
-      res.json(musicData);});
-    } catch (parseErr) {
-      console.error('Error parsing JSON:', parseErr);
-      res.status(500).send('Invalid JSON format');
-    }
+    res.json(JSON.parse(data));
   });
 });
+
 
 // POST /api/register
 app.post('/api/register', async (req, res) => {
