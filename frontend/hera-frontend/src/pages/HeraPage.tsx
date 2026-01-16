@@ -5,8 +5,10 @@ import App from "../../app.js"; // Import the App component
 
 const HeraPage: React.FC = () => {
   const hera = GODDESSES.find((g) => g.id === "hera")!;
-console.log("BACKEND URL:", import.meta.env.VITE_PANTHEON_BACKEND_URL);
 
+const backendUrl = import.meta.env.VITE_HERA_BACKEND_URL;
+
+console.log("Hera backend URL:", backendUrl);
   return (
     
     <GoddessPageLayout goddess={hera}>
