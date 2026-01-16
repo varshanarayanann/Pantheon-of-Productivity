@@ -79,16 +79,17 @@ app.get('/api/music', (req, res) => {
       console.error('Error reading JSON file:', err);
       return res.status(500).send('Server Error');
     }
+
     try {
-      const musicData = require('./data/muses-music.json');
-      app.get('/api/music', (req, res) => {
-      res.json(musicData);});
+      const musicData = JSON.parse(data); // Parse JSON file
+      res.json(musicData); // Send it in response
     } catch (parseErr) {
       console.error('Error parsing JSON:', parseErr);
       res.status(500).send('Invalid JSON format');
     }
   });
 });
+
 
 // app.get('/api/music', (req, res) => {
 //   const filePath = path.join(__dirname, 'data', 'muses-music.json');
