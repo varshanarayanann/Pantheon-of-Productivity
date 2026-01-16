@@ -15,7 +15,8 @@ export interface BackendResponse {
 export const sendMessage = async (message: string, history: ChatMessage[]): Promise<BackendResponse> => {
   try {
     // This URL must match the address of your running backend server.
-    const backendUrl = `${process.env.NEXT_PUBLIC_HERA_BACKEND_URL}/api/chat`;
+    const backendUrl = `${import.meta.env.VITE_HERA_BACKEND_URL}/api/chat`;
+
 
     const response = await fetch(backendUrl, {
       method: 'POST',
