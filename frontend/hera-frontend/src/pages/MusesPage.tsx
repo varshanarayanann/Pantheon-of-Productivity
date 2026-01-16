@@ -44,13 +44,13 @@ const MusesPage: React.FC = () => {
   useEffect(() => {
   console.log(
     "BACKEND URL:",
-    process.env.NEXT_PUBLIC_PANTHEON_BACKEND_URL
+    import.meta.env.VITE_PANTHEON_BACKEND_URL
   );
 
   const fetchMusic = async () => {
     try {
       const response = await axios.get<Track[]>(
-        `${process.env.NEXT_PUBLIC_PANTHEON_BACKEND_URL}/api/music`
+        `${import.meta.env.VITE_PANTHEON_BACKEND_URL}/api/music`
       );
       setTracks(response.data);
     } catch (error) {
