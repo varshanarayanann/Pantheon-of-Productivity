@@ -32,11 +32,13 @@ const LoginPage: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     console.log(
   "PANTHEON BACKEND URL:",
-  process.env.NEXT_PUBLIC_PANTHEON_BACKEND_URL
+    import.meta.env.VITE_PANTHEON_BACKEND_URL
+
 );
 
     e.preventDefault();
-    const API_URL = `${process.env.NEXT_PUBLIC_PANTHEON_BACKEND_URL}/api`;
+    const API_URL = `${import.meta.env.VITE_PANTHEON_BACKEND_URL}/api`;
+
 
     const endpoint = isLoginView ? `${API_URL}/login` : `${API_URL}/register`;
     
