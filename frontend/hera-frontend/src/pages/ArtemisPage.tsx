@@ -93,14 +93,14 @@ const ArtemisPage: React.FC = () => {
             </div>
         </div>
 
-        <div className="bg-slate-100 dark:bg-slate-800 rounded-lg p-6 border border-slate-200 dark:border-slate-700">
+        {/* <div className="bg-slate-100 dark:bg-slate-800 rounded-lg p-6 border border-slate-200 dark:border-slate-700">
             <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2">Focus Timer</h3>
             <p className="text-slate-500 dark:text-slate-400">
                 Use a pomodoro-style timer to hunt down your tasks with unwavering focus.
                 <br/>
                 <em className="text-sm">(Feature coming soon)</em>
             </p>
-        </div>
+        </div> */}
       </div>
     </GoddessPageLayout>
   );
