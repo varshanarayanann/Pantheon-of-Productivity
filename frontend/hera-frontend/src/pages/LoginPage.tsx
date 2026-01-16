@@ -30,6 +30,11 @@ const LoginPage: React.FC = () => {
   const auth = useContext(AuthContext);
 
   const handleSubmit = async (e: React.FormEvent) => {
+    console.log(
+  "PANTHEON BACKEND URL:",
+  process.env.NEXT_PUBLIC_PANTHEON_BACKEND_URL
+);
+
     e.preventDefault();
     const API_URL = `${process.env.NEXT_PUBLIC_PANTHEON_BACKEND_URL}/api`;
 
