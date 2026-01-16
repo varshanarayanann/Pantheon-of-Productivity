@@ -76,7 +76,7 @@ const AppRoutes: React.FC = () => {
           <Route path={GODDESSES[5].path} element={<GaiaPage />} />
           <Route path={GODDESSES[6].path} element={<MusesPage />} />
           <Route path={GODDESSES[7].path} element={<NikePage />} />
-          <Route path={GODDESSES[8].path} element={<ErisPage />} />
+          {/* <Route path={GODDESSES[8].path} element={<ErisPage />} /> */}
           {/* Redirect any other path to the homepage if logged in */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
